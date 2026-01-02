@@ -34,7 +34,7 @@ const registerUser = asyncHandler ( async(req , res) => {
 })
 
 
-const userAuth = asyncHandler(async(req,res)=>{
+const authUser = asyncHandler(async(req,res)=>{
     const {email , password} = req.body;
     const user = await User.findOne({email});
     if(user && (await user.matchPassword(password))){
@@ -51,4 +51,25 @@ const userAuth = asyncHandler(async(req,res)=>{
     }
 });
 
-module.exports = {registerUser,userAuth};
+
+
+
+const allUsers = asyncHandler(async (req, res) => {
+  console.log("Search API Called! Keyword:", req.query.search);
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } }, // "i" = case insensitive
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
+
+  // Find users matching the keyword, but not the current user (me)
+  // Note: req.user comes from the 'protect' middleware
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+  res.send(users);
+});
+
+// Don't forget to export it!
+module.exports = { registerUser, authUser, allUsers };
