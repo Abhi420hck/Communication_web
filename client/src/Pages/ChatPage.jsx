@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
-import SideDrawer from "../components/miscellaneous/SideDrawer";
-import MyChats from "../components/MyChats";
-import ChatBox from "../components/ChatBox";
+import SideDrawer from "../Components/miscellaneous/SideDrawer";
+import MyChats from "../Components/MyChats";
+import ChatBox from "../Components/ChatBox";
 
 const ChatPage = () => {
   const { user } = ChatState(); // Access Global State

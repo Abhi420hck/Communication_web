@@ -34,7 +34,7 @@ const Signup = () => {
       // 2. Send Data to Backend
       // Note: We use the full URL because we haven't set up a proxy yet
       const { data } = await axios.post(
-        "http://localhost:5000/api/user",
+        "https://communication-web.onrender.com/api/user",
         { name, email, password, pic },
         config
       );

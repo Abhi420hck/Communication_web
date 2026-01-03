@@ -10,7 +10,7 @@ import ScrollableChat from "./ScrollableChat";
 import "./styles.css";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
-const ENDPOINT = "http://localhost:5000"; // Server URL
+const ENDPOINT = "https://communication-web.onrender.com"; // Server URL
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
@@ -33,7 +33,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/message/${selectedChat._id}`,
+        `https://communication-web.onrender.com/api/message/${selectedChat._id}`,
         config
       );
       
@@ -65,7 +65,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         setNewMessage(""); // Clear input immediately
         
         const { data } = await axios.post(
-          "http://localhost:5000/api/message",
+          "https://communication-web.onrender.com/api/message",
           {
             content: newMessage,
             chatId: selectedChat._id,

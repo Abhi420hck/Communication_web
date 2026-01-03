@@ -69,7 +69,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://communication-web.onrender.com/api/user?search=${search}`,
         config
       );
       setSearchResult(data);
@@ -95,7 +95,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.post(
-        `http://localhost:5000/api/chat`,
+        `https://communication-web.onrender.com/api/chat`,
         { userId },
         config
       );

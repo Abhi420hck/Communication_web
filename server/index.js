@@ -6,6 +6,10 @@ const chatRoutes = require("./Routes/chatRoutes");
 const messageRoutes = require("./Routes/messageRoutes");
 const cors = require("cors");
 
+
+
+// Also update the top app.use(cors()) if you had specific options there
+
 dotenv.config();
 connectDB();
 const app = express();

@@ -30,7 +30,7 @@ const Login = () => {
 
       // 3. Fix: Send ONLY email and password
       const { data } = await axios.post(
-        "http://localhost:5000/api/user/login",
+        "https://communication-web.onrender.com/api/user/login",
         { email, password }, // <--- specific fields for login
         config
       );
